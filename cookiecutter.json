@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "hyphenated": "{{ cookiecutter.name | slugify(separator='-') }}",
+  "underscored": "{{ cookiecutter.name | slugify(separator='_') }}",
+  "author_name": "",
+  "author_email": "",
+  "author_github": "",
+  "author_paypal": ""
+}

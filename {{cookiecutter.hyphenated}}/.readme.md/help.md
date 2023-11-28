@@ -1,0 +1,2 @@
+    $ {{ cookiecutter.hyphenated }} --help
+    FIXME
