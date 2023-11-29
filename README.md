@@ -37,7 +37,7 @@ pip install demo-demo
 
 ## Usage
 
-<!-- include .readme.md/help.md -->
+<!-- include tests/readme/help.md -->
     $ demo-demo --help
     Usage: demo-demo [OPTIONS]
     
@@ -58,7 +58,7 @@ which is located at `~/.config/demo_demo/config.yaml` by default
 
 Sample config file can be generated using the `--config-sample` flag:
 
-<!-- include .readme.md/config-sample.md -->
+<!-- include tests/readme/config-sample.md -->
     $ demo-demo --config-sample
 <!-- end include -->
 
