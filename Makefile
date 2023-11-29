@@ -1,3 +1,4 @@
+DEMO_BRANCH := demo
 DEMO_DATA := \
 	name="Demo DEMO" \
 	author_name="Tomas Janousek" \
@@ -7,7 +8,7 @@ DEMO_DATA := \
 
 .PHONY: demo
 demo:
-	./update.sh --template . --branch demo $(DEMO_DATA)
+	./update.sh --template . --branch $(DEMO_BRANCH) $(DEMO_DATA)
 
 .PHONY: clean
 clean:
