@@ -10,9 +10,8 @@
 #  - https://github.com/thomasjahoda/cookiecutter_project_upgrader
 #  - https://github.com/cruft/cruft
 
-# TODO: data json input
-
 set -eu -o pipefail
+shopt -s lastpipe
 
 if [[ -t 1 ]]; then _o_tput_bold=$(tput bold || :); _o_tput_reset=$(tput sgr0 || :); else _o_tput_bold=; _o_tput_reset=; fi
 function o { printf -->&2 "%s%s:%s%s\\n" "$_o_tput_bold" "${0##*/}" "$_o_tput_reset" "$(printf " %q" "$@")"; "$@"; }
@@ -21,8 +20,8 @@ function oo { printf -->&2 "%s%s:%s %s\\n" "$_o_tput_bold" "${0##*/}" "$_o_tput_
 options=$(
 	env --unset=GETOPT_COMPATIBLE --unset=POSIXLY_CORRECT \
 	getopt \
-		-o ht:p:b: \
-		--long help,template:,project:,branch: \
+		-o ht:p:b:i: \
+		--long help,template:,project:,branch:,input: \
 		-- "$@"
 )
 eval "set -- $options"
@@ -30,6 +29,7 @@ eval "set -- $options"
 template=
 project=.
 branch=template
+input=
 while (( $# )); do
 	opt=$1; shift
 	case "$opt" in
@@ -39,6 +39,7 @@ while (( $# )); do
 				"[(-t|--template) TEMPLATE_DIR]" \
 				"[(-p|--project) PROJECT_DIR]" \
 				"[(-b|--branch) BRANCH]" \
+				"[(-i|--input) EXTRA_CONTEXT_JSON]" \
 				"[--] [cookiecutter EXTRA_CONTEXT]"
 			exit
 			;;
@@ -46,6 +47,7 @@ while (( $# )); do
 		-t|--template) template=$1; shift ;;
 		-p|--project) project=$1; shift ;;
 		-b|--branch) branch=$1; shift ;;
+		-i|--input) input=$1; shift ;;
 		--) break ;;
 	esac
 done
@@ -53,6 +55,11 @@ done
 : "${template:?}"
 : "${project:?}"
 : "${branch:?}"
+
+if [[ $input ]]; then
+	jq -r 'to_entries[] | "\(.key)=\(.value)"' "$input" | readarray -t inputs
+	set -- "${inputs[@]}" "$@"
+fi
 
 TMPDIR=$(mktemp -d)
 export TMPDIR
@@ -76,7 +83,7 @@ fi
 
 o cookiecutter \
 	--default-config \
-	--no-input \
+	"${@+--no-input}" \
 	--overwrite-if-exists \
 	--output-dir "$tmp_worktree/.." \
 	"$template" \
