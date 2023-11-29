@@ -6,6 +6,15 @@ DEMO_DATA := \
 	author_github=liskin \
 	author_paypal=lisknisi
 
+.PHONY: tmp
+tmp:
+	cookiecutter \
+		--no-input \
+		--overwrite-if-exists \
+		--output-dir .tmp \
+		. \
+		$(DEMO_DATA)
+
 .PHONY: demo
 demo:
 	./update.sh --template . --branch $(DEMO_BRANCH) $(DEMO_DATA)
