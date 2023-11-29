@@ -1,0 +1,11 @@
+{
+    "_template": ".",
+    "author_email": "tomi@nomi.cz",
+    "author_github": "liskin",
+    "author_name": "Tomas Janousek",
+    "author_paypal": "lisknisi",
+    "dest_dir": "worktree",
+    "hyphenated": "demo-demo",
+    "name": "Demo DEMO",
+    "underscored": "demo_demo"
+}
