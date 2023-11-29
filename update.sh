@@ -90,4 +90,13 @@ o cookiecutter \
 	"$@" dest_dir="$(basename "$tmp_worktree")"
 
 o git -C "$tmp_worktree" add -A .
-o git -C "$tmp_worktree" commit -m "Render template $template at $template_version" --allow-empty
+
+last_commit_msg=$(git -C "$tmp_worktree" log -1 --pretty=format:%B 2>/dev/null || :)
+commit_msg="Render template $template at $template_version"
+git -C "$tmp_worktree" diff --quiet --exit-code --cached && changed= || changed=:
+
+if [[ $changed || "$last_commit_msg" != "$commit_msg" ]]; then
+	o git -C "$tmp_worktree" commit -m "$commit_msg" --allow-empty
+else
+	oo "Skipping commit, no changes and no new template version"
+fi
