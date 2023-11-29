@@ -82,7 +82,6 @@ else
 fi
 
 o cookiecutter \
-	--default-config \
 	"${@+--no-input}" \
 	--overwrite-if-exists \
 	--output-dir "$tmp_worktree/.." \
