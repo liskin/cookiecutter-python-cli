@@ -86,7 +86,7 @@ o cookiecutter \
 	--overwrite-if-exists \
 	--output-dir "$tmp_worktree/.." \
 	"$template" \
-	"$@" dest_dir="$(basename "$tmp_worktree")"
+	"$@" _dest_dir="$(basename "$tmp_worktree")"
 
 o git -C "$tmp_worktree" add -A .
 

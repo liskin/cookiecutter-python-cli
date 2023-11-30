@@ -8,12 +8,13 @@ DEMO_DATA := \
 
 .PHONY: tmp
 tmp:
+	$(RM) -r .tmp
 	cookiecutter \
 		--no-input \
 		--overwrite-if-exists \
 		--output-dir .tmp \
 		. \
-		$(DEMO_DATA)
+		_dest_dir=. $(DEMO_DATA)
 
 .PHONY: demo
 demo:

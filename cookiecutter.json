@@ -2,7 +2,7 @@
   "name": "",
   "hyphenated": "{{ cookiecutter.name | slugify(separator='-') }}",
   "underscored": "{{ cookiecutter.name | slugify(separator='_') }}",
-  "dest_dir": "{{ cookiecutter.hyphenated }}",
+  "_dest_dir": "{{ cookiecutter.hyphenated }}",
   "author_name": "",
   "author_email": "",
   "author_github": "",
