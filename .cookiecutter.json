@@ -1,6 +1,7 @@
 {
     "_dest_dir": "worktree",
     "_template": ".",
+    "_template_name": "cookiecutter-python-cli",
     "author_email": "tomi@nomi.cz",
     "author_github": "liskin",
     "author_name": "Tomas Janousek",
