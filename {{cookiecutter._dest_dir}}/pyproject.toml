@@ -24,7 +24,6 @@ classifiers = [ # https://pypi.org/classifiers/
     "Programming Language :: Python :: 3.12",
     # FIXME: "Topic :: …",
 ]
-urls = {Homepage = "https://github.com/liskin/{{ cookiecutter.hyphenated }}"}
 requires-python = "~= 3.8"
 dependencies = [
     "PyYAML",
@@ -47,6 +46,16 @@ dev = [
 test = [
     "pytest",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}"
+"Release Notes" = "https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}/releases"
+"Issues" = "https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}/issues"
+"CI" = "https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}/actions"
+"Donations (GitHub)" = "https://github.com/sponsors/{{ cookiecutter.author_github }}"
+{%- if cookiecutter.author_paypal %}
+"Donations (PayPal)" = "https://www.paypal.me/{{ cookiecutter.author_paypal }}/10EUR"
+{%- endif %}
 
 [project.scripts]
 {{ cookiecutter.hyphenated }} = "{{ cookiecutter.underscored }}.cli:cli"
