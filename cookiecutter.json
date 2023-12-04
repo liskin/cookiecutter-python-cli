@@ -2,9 +2,11 @@
   "name": "",
   "hyphenated": "{{ cookiecutter.name | slugify(separator='-') }}",
   "underscored": "{{ cookiecutter.name | slugify(separator='_') }}",
-  "_dest_dir": "{{ cookiecutter.hyphenated }}",
   "author_name": "",
   "author_email": "",
   "author_github": "",
-  "author_paypal": ""
+  "author_paypal": "",
+
+  "_dest_dir": "{{ cookiecutter.hyphenated }}",
+  "_template_name": "cookiecutter-python-cli"
 }
