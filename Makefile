@@ -14,7 +14,9 @@ tmp:
 		--overwrite-if-exists \
 		--output-dir .tmp \
 		. \
-		_dest_dir=. $(DEMO_DATA)
+		_dest_dir=. \
+		_setuptools_scm_root=.. \
+		$(DEMO_DATA)
 
 .PHONY: demo
 demo:

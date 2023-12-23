@@ -81,6 +81,9 @@ dependencies-apt = [
 ]
 
 [tool.setuptools_scm]
+{%- if cookiecutter._setuptools_scm_root %}
+root = "{{ cookiecutter._setuptools_scm_root }}"
+{%- endif %}
 
 [tool.setuptools.packages.find]
 where = ["src"]

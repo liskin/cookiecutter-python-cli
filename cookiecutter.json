@@ -7,6 +7,7 @@
   "author_github": "",
   "author_paypal": "",
 
+  "_setuptools_scm_root": "",
   "_dest_dir": "{{ cookiecutter.hyphenated }}",
   "_template_name": "cookiecutter-python-cli"
 }
