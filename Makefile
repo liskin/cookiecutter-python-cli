@@ -7,8 +7,10 @@ DEMO_DATA := \
 	author_paypal=lisknisi
 
 .PHONY: tmp
+## Generate demo project into the .tmp subdirectory.
+## Specify RM= to avoid cleaning the subdirectory first.
 tmp:
-	$(RM) -r .tmp
+	$(if $(RM),$(RM) -r .tmp)
 	cookiecutter \
 		--no-input \
 		--overwrite-if-exists \
@@ -19,10 +21,14 @@ tmp:
 		$(DEMO_DATA)
 
 .PHONY: demo
+## Generate demo project into a demo branch using the update.sh machinery.
 demo:
 	./update.sh --template . --branch $(DEMO_BRANCH) $(DEMO_DATA)
 
 .PHONY: clean
+## Clean (remove all gitignored files and prune worktrees).
 clean:
 	git clean -ffdX
 	git worktree prune
+
+include _help.mk
