@@ -9,5 +9,9 @@
 
   "_setuptools_scm_root": "",
   "_dest_dir": "{{ cookiecutter.hyphenated }}",
-  "_template_name": "cookiecutter-python-cli"
+  "_template_name": "cookiecutter-python-cli",
+
+  "_extensions": [
+    "jinja2.ext.do"
+  ]
 }

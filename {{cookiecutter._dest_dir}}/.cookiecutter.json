@@ -1,1 +1,2 @@
+{% do cookiecutter.update({'_output_dir': ''}) -%}
 {{ cookiecutter | jsonify }}
