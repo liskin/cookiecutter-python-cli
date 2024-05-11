@@ -1,2 +1,7 @@
-{% do cookiecutter.update({'_output_dir': ''}) -%}
-{{ cookiecutter | jsonify }}
+{% set cookiecutter_input = dict(cookiecutter) -%}
+{% for key in cookiecutter.keys() -%}
+{%     if key.startswith('_') -%}
+{%         do cookiecutter_input.pop(key) -%}
+{%     endif -%}
+{% endfor -%}
+{{ cookiecutter_input | jsonify }}
