@@ -1,14 +1,4 @@
 {
-    "_checkout": null,
-    "_dest_dir": "worktree",
-    "_extensions": [
-        "jinja2.ext.do"
-    ],
-    "_output_dir": "",
-    "_repo_dir": ".",
-    "_setuptools_scm_root": "",
-    "_template": ".",
-    "_template_name": "cookiecutter-python-cli",
     "author_email": "tomi@nomi.cz",
     "author_github": "liskin",
     "author_name": "Tomas Janousek",
