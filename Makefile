@@ -13,7 +13,7 @@ VENV_WHEEL_PYTHON = $(VENV_WHEEL)/bin/python
 PACKAGE := $(shell sed -ne '/^name / { y/-/_/; s/^.*=\s*"\(.*\)"/\1/p }' pyproject.toml)
 
 TEMPLATES_DIR = $(HOME)/src
-TEMPLATE := $(shell realpath --relative-to=. $(TEMPLATES_DIR)/cookiecutter-python-cli)
+TEMPLATE = $(eval TEMPLATE := $$(shell realpath --relative-to=. $$(TEMPLATES_DIR)/cookiecutter-python-cli))$(TEMPLATE)
 
 .PHONY: venv-system-site-packages
 venv-system-site-packages:
