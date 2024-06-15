@@ -73,9 +73,9 @@ remote=$(git -C "$project" branch --list "$project_current_branch" --format="%(u
 
 tmp_worktree="$TMPDIR/worktree"
 o git -C "$project" worktree prune
-if git -C "$project" rev-parse -q --verify "$branch" 2>/dev/null; then
+if git -C "$project" rev-parse -q --verify "$branch" &>/dev/null; then
 	o git -C "$project" worktree add --no-checkout "$tmp_worktree" "$branch"
-elif git -C "$project" rev-parse -q --verify "$remote"/"$branch" 2>/dev/null; then
+elif git -C "$project" rev-parse -q --verify "$remote"/"$branch" &>/dev/null; then
 	o git -C "$project" worktree add --no-checkout -b "$branch" "$tmp_worktree" "$remote"/"$branch"
 else
 	o git -C "$project" worktree add --orphan -b "$branch" "$tmp_worktree"
