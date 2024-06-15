@@ -64,7 +64,7 @@ fi
 TMPDIR=$(mktemp -d)
 export TMPDIR
 # shellcheck disable=SC2064
-trap "rm -rf $(printf %q "$TMPDIR")" EXIT
+trap "rm -rf $(printf %q "$TMPDIR"); o git -C $(printf %q "$project") worktree prune" EXIT
 
 template_version=$(git -C "$template" describe --always --abbrev=10 --dirty)
 
