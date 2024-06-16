@@ -79,12 +79,12 @@ test-prysk: $(VENV_DONE)
 		$(wildcard tests/*.md tests/*/*.md tests/*/*/*.md)
 
 .PHONY: readme
-## Update usage/examples in README.md and fail if it differs from version control
-readme: README.md
+## Update usage/examples in *.md and fail if it differs from version control
+readme: $(wildcard *.md)
 	git diff --exit-code $^
 
-.PHONY: README.md
-README.md: test-prysk
+.PHONY: $(wildcard *.md)
+$(wildcard *.md): test-prysk
 	tests/include.py < $@ > $@.tmp
 	mv -f $@.tmp $@
 
@@ -142,7 +142,7 @@ endef
 # workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1003252 and/or https://github.com/pypa/pip/issues/6264
 ifneq ($(VENV_USE_SYSTEM_SITE_PACKAGES),)
 ifneq ($(shell test -f /etc/debian_version && python3 -c 'import sys; exit(not(sys.version_info < (3, 10)))' && echo x),)
-$(info XXX: using SETUPTOOLS_USE_DISTUTILS=stdlib workaround)
+$(warning XXX: using SETUPTOOLS_USE_DISTUTILS=stdlib workaround)
 $(VENV_DONE): export SETUPTOOLS_USE_DISTUTILS := stdlib
 endif
 endif

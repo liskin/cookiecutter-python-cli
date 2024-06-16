@@ -54,7 +54,26 @@ Sample config file can be generated using the `--config-sample` flag:
 <!-- end include -->
 {%- if cookiecutter.author_github and cookiecutter.author_paypal %}
 
-## Donations (♥ = €)
+## Contributing
+
+### Code
+
+We welcome bug fixes, (reasonable) new features, documentation improvements,
+and more. Submit these as GitHub pull requests. Use GitHub issues to report
+bugs and discuss non-trivial code improvements; alternatively, get in touch
+via [IRC/Matrix/Fediverse](https://work.lisk.in/contact/).
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details about the code base
+(including running tests locally).
+
+Note that this project was born out of a desire to solve a problem I was
+facing. While I'm excited to share it with the world, keep in mind that I'll
+be prioritizing features and bug fixes that align with my personal use cases.
+There may be times when I'm busy with other commitments and replies to
+contributions might be delayed, or even occasionally missed. Progress may come
+in bursts. Adjust your expectations accordingly.
+
+### Donations (♥ = €)
 
 If you like this tool and wish to support its development and maintenance,
 please consider [a small donation](https://www.paypal.me/{{ cookiecutter.author_paypal }}/10EUR) or

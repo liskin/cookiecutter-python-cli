@@ -6,5 +6,5 @@ set -eu -o pipefail
 [[ "$(pwd -P)" == "$(git rev-parse --show-toplevel 2>/dev/null)" ]] || exit 0
 
 make
-make README.md PRYSK_INTERACTIVE="-i -y" || make README.md PRYSK_INTERACTIVE="-i -y"
+make ./*.md PRYSK_INTERACTIVE="-i -y" || make ./*.md PRYSK_INTERACTIVE="-i -y"
 make clean
