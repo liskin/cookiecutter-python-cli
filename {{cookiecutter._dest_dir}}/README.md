@@ -38,7 +38,7 @@ pip install {{ cookiecutter.hyphenated }}
 ## Usage
 
 <!-- include tests/readme/help.md -->
-<!-- end include -->
+<!-- end include tests/readme/help.md -->
 
 <!-- FIXME: example -->
 
@@ -51,7 +51,7 @@ which is located at `~/.config/{{ cookiecutter.underscored }}/config.yaml` by de
 Sample config file can be generated using the `--config-sample` flag:
 
 <!-- include tests/readme/config-sample.md -->
-<!-- end include -->
+<!-- end include tests/readme/config-sample.md -->
 {%- if cookiecutter.author_github and cookiecutter.author_paypal %}
 
 ## Contributing

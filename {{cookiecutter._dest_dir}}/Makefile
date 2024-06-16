@@ -84,9 +84,8 @@ readme: $(wildcard *.md)
 	git diff --exit-code $^
 
 .PHONY: $(wildcard *.md)
-$(wildcard *.md): test-prysk
-	tests/include.py < $@ > $@.tmp
-	mv -f $@.tmp $@
+$(wildcard *.md): $(VENV_DONE) test-prysk
+	$(VENV_PYTHON) tests/include-preproc.py --comment-start="<!-- " --comment-end=" -->" $@
 
 .PHONY: dist
 ## Build distribution artifacts (tar, wheel)

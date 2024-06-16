@@ -24,7 +24,7 @@ enable Actions in your fork's settings.
 Other common tasks are available in the [Makefile](Makefile):
 
 <!-- include tests/readme/make-help.md -->
-<!-- end include -->
+<!-- end include tests/readme/make-help.md -->
 
 [ci]: https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}/actions
 
