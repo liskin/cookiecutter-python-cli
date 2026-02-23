@@ -1,5 +1,10 @@
 demo_branch := "demo"
-demo_data := 'name="Demo DEMO" author_name="Tomas Janousek" author_email=tomi@nomi.cz author_github=liskin author_paypal=lisknisi'
+demo_data := \
+    'name="Demo DEMO"' + \
+    ' author_name="Tomas Janousek"' + \
+    ' author_email=tomi@nomi.cz' + \
+    ' author_github=liskin' + \
+    ' author_paypal=lisknisi'
 
 # Generate demo project into the .tmp subdirectory.
 # Specify rm="" to avoid cleaning the subdirectory first.
