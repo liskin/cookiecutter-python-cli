@@ -12,16 +12,18 @@ demo_data := """
 	author_paypal=lisknisi
 """
 
+# tmp_dir := ".tmp"
+
 # Generate demo project into the .tmp subdirectory, removing it first.
-tmp-rm: && tmp
-	rm -r .tmp
+tmp-rm tmp_dir=".tmp": && (tmp tmp_dir)
+	rm -r {{tmp_dir}}
 
 # (Re)generate demo project into the .tmp subdirectory.
-tmp:
+tmp tmp_dir=".tmp":
 	cookiecutter \
 		--no-input \
 		--overwrite-if-exists \
-		--output-dir .tmp \
+		--output-dir {{tmp_dir}} \
 		. \
 		_dest_dir=. \
 		_setuptools_scm_root=.. \
