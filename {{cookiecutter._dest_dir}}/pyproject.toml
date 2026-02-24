@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "setuptools >= 64.0",
+    "setuptools >= 77.0.3",
     "setuptools_scm[toml] >= 6.2",
 ]
 build-backend = "setuptools.build_meta"
@@ -9,13 +9,12 @@ build-backend = "setuptools.build_meta"
 name = "{{ cookiecutter.hyphenated }}"
 description = "FIXME"
 authors = [{name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}"}]
-license = {text = "MIT"}
+license = "MIT"
 readme = {file="README.md", content-type="text/markdown"}
 dynamic = ["version"]
 classifiers = [ # https://pypi.org/classifiers/
     # FIXME: "Development Status :: …",
     "Environment :: Console",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
