@@ -3,7 +3,7 @@ PYTHON = python3
 VENV = .venv
 VENV_PYTHON = $(VENV)/bin/python
 VENV_DONE = $(VENV)/.done
-VENV_PIP_INSTALL = '.[dev, test]'
+VENV_PIP_INSTALL = .
 VENV_SYSTEM_SITE_PACKAGES = $(VENV)/.venv-system-site-packages
 VENV_USE_SYSTEM_SITE_PACKAGES = $(wildcard $(VENV_SYSTEM_SITE_PACKAGES))
 
@@ -138,7 +138,8 @@ endef
 
 $(VENV_DONE): $(MAKEFILE_LIST) pyproject.toml
 	$(if $(VENV_USE_SYSTEM_SITE_PACKAGES),$(VENV_CREATE_SYSTEM_SITE_PACKAGES),$(VENV_CREATE))
-	$(VENV_PYTHON) -m pip install -e $(VENV_PIP_INSTALL)
+	$(VENV_PYTHON) -m pip install 'pip >= 25.1' # PEP-735 (dependency groups)
+	$(VENV_PYTHON) -m pip install --group dev -e $(VENV_PIP_INSTALL)
 	touch $@
 
 include _help.mk

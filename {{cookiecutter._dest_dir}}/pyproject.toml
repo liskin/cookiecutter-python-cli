@@ -32,18 +32,16 @@ dependencies = [
     "platformdirs >= 2.1",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "build >= 0.7",
     "flake8",
     "isort >= 5.0",
     "mypy >= 0.900",
     "prysk >= 0.20.0",
+    "pytest",
     "twine",
     "types-PyYAML",
-]
-test = [
-    "pytest",
 ]
 
 [project.urls]
