@@ -7,9 +7,6 @@ VENV_PIP_INSTALL = .
 VENV_SYSTEM_SITE_PACKAGES = $(VENV)/.venv-system-site-packages
 VENV_USE_SYSTEM_SITE_PACKAGES = $(wildcard $(VENV_SYSTEM_SITE_PACKAGES))
 
-VENV_WHEEL = .venv-wheel
-VENV_WHEEL_PYTHON = $(VENV_WHEEL)/bin/python
-
 PACKAGE := $(shell sed -ne '/^name / { y/-/_/; s/^.*=\s*"\(.*\)"/\1/p }' pyproject.toml)
 
 TEMPLATES_DIR = $(HOME)/src
@@ -118,14 +115,16 @@ template-update:
 template-merge: template-update
 	git merge template
 
-.PHONY: check-wheel
-## Check that the wheel we build works in a completely empty venv
+.PHONY: smoke-dist
+## Smoke test the build artifacts in an isolated venv
 ## (i.e. check for unspecified dependencies)
-check-wheel: dist
-	$(PYTHON) -m venv --clear --without-pip $(VENV_WHEEL)
-	cd $(VENV_WHEEL) && $(PYTHON) -m pip --isolated download pip
-	set -- $(VENV_WHEEL)/pip-*-py3-none-any.whl && $(VENV_WHEEL_PYTHON) $$1/pip install dist/$(PACKAGE)-*.whl
-	$(VENV_WHEEL_PYTHON) -m $(PACKAGE) --help
+smoke-dist: dist
+	for dist in dist/$(PACKAGE)-*.whl dist/$(PACKAGE)-*.tar*; do \
+		uv run \
+			--isolated --no-project \
+			--with "$$dist" \
+			-- python -m $(PACKAGE) --help; \
+	done
 
 define VENV_CREATE
 	$(PYTHON) -m venv $(VENV)

@@ -52,7 +52,7 @@ Other common tasks are available in the [Makefile](Makefile):
     clean: Clean all gitignored files/directories
     template-update: Re-render cookiecutter template into the template branch
     template-merge: Re-render cookiecutter template and merge into the current branch
-    check-wheel: Check that the wheel we build works in a completely empty venv (i.e. check for unspecified dependencies)
+    smoke-dist: Smoke test the build artifacts in an isolated venv (i.e. check for unspecified dependencies)
     help: Display this help
 <!-- end include tests/readme/make-help.md -->
 
