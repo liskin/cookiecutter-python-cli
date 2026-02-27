@@ -12,27 +12,27 @@ Demo DEMO is a …
 
 ## Installation
 
+Using [uv][]:
+
+```console
+$ uv tool install demo-demo
+```
+
 Using [pipx][]:
 
-```
-pipx ensurepath
-pipx install demo-demo
-```
-
-To keep a local git clone around:
-
-```
-git clone https://github.com/liskin/demo-demo
-make -C demo-demo pipx
+```console
+$ pipx ensurepath
+$ pipx install demo-demo
 ```
 
-Alternatively, if you don't need the isolated virtualenv that [pipx][]
-provides, feel free to just:
+From a git clone:
 
-```
-pip install demo-demo
+```console
+$ git clone https://github.com/liskin/demo-demo
+$ uv tool install ./demo-demo
 ```
 
+[uv]: https://docs.astral.sh/uv/
 [pipx]: https://github.com/pypa/pipx
 
 ## Usage

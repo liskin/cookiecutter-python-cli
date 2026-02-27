@@ -35,8 +35,6 @@ Other common tasks are available in the [Makefile](Makefile):
     $ make help
     venv-system-site-packages: Setup ./.venv/ (--system-site-packages)
     venv: Setup ./.venv/
-    pipx: Install locally using pipx
-    pipx-site-packages: Install locally using pipx (--system-site-packages)
     check: Invoke all checks (lints, tests, readme)
     lint: Invoke lints
     lint-flake8:
