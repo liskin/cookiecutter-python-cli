@@ -54,6 +54,7 @@ demo-demo = "demo_demo.cli:cli"
 
 [tool.gha-check-distro]
 dependencies-apt = [
+    "jq",
     "make",
     "python3-click",
     "python3-configobj",
