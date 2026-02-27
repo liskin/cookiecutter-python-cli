@@ -44,8 +44,8 @@ Other common tasks are available in the [Makefile](Makefile):
     test-pytest:
     test-prysk:
     readme: Update usage/examples in *.md and fail if it differs from version control
-    dist: Build distribution artifacts (tar, wheel)
-    twine-upload: Release to PyPI
+    dist: Build distribution artifacts (sdist, wheel)
+    publish: Publish to PyPI
     ipython: Invoke IPython in venv (not installed by default)
     clean: Clean all gitignored files/directories
     template-update: Re-render cookiecutter template into the template branch

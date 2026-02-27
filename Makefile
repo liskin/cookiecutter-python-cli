@@ -75,15 +75,14 @@ $(wildcard *.md): $(VENV_DONE) test-prysk
 	$(VENV_PYTHON) tests/include-preproc.py --comment-start="<!-- " --comment-end=" -->" $@
 
 .PHONY: dist
-## Build distribution artifacts (tar, wheel)
-dist: $(VENV_DONE)
-	rm -rf dist/
-	$(VENV_PYTHON) -m build --outdir dist
+## Build distribution artifacts (sdist, wheel)
+dist:
+	uv build --clear
 
-.PHONY: twine-upload
-## Release to PyPI
-twine-upload: dist
-	$(VENV_PYTHON) -m twine upload $(wildcard dist/*)
+.PHONY: publish
+## Publish to PyPI
+publish: dist
+	uv publish
 
 .PHONY: ipython
 ## Invoke IPython in venv (not installed by default)
