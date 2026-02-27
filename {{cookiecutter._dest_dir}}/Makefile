@@ -9,8 +9,6 @@ VENV_DONE = $(VENV)/.done
 VENV_SYSTEM_SITE_PACKAGES = $(VENV)/.venv-system-site-packages
 VENV_USE_SYSTEM_SITE_PACKAGES = $(wildcard $(VENV_SYSTEM_SITE_PACKAGES))
 
-PACKAGE := $(shell sed -ne '/^name / { y/-/_/; s/^.*=\s*"\(.*\)"/\1/p }' pyproject.toml)
-
 TEMPLATES_DIR = $(HOME)/src
 TEMPLATE = $(eval TEMPLATE := $$(shell realpath --relative-to=. $$(TEMPLATES_DIR)/{{ cookiecutter._template_name }}))$(TEMPLATE)
 
@@ -110,11 +108,12 @@ template-merge: template-update
 ## Smoke test the build artifacts in an isolated venv
 ## (i.e. check for unspecified dependencies)
 smoke-dist: dist
-	for dist in dist/$(PACKAGE)-*.{whl,tar*}; do \
+	package=$$(uvx --from yq -- tomlq -e -r '.project.name | gsub("-"; "_")' pyproject.toml); \
+	for dist in dist/"$$package"-*.{whl,tar*}; do \
 		uv run \
 			--isolated --no-project \
 			--with "$$dist" \
-			-- python -m $(PACKAGE) --help; \
+			-- python -m "$$package" --help; \
 	done
 
 define VENV_CREATE
