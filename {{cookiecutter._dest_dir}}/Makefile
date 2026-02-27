@@ -1,3 +1,6 @@
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
+
 PYTHON = python3
 
 VENV = .venv
@@ -108,7 +111,7 @@ template-merge: template-update
 ## Smoke test the build artifacts in an isolated venv
 ## (i.e. check for unspecified dependencies)
 smoke-dist: dist
-	for dist in dist/$(PACKAGE)-*.whl dist/$(PACKAGE)-*.tar*; do \
+	for dist in dist/$(PACKAGE)-*.{whl,tar*}; do \
 		uv run \
 			--isolated --no-project \
 			--with "$$dist" \
