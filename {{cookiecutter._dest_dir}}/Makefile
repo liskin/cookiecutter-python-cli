@@ -21,16 +21,6 @@ venv-system-site-packages:
 ## Setup ./.venv/
 venv: $(VENV_DONE)
 
-.PHONY: pipx
-## Install locally using pipx
-pipx:
-	pipx install --editable .
-
-.PHONY: pipx-site-packages
-## Install locally using pipx (--system-site-packages)
-pipx-site-packages:
-	pipx install --system-site-packages --editable .
-
 .PHONY: check
 ## Invoke all checks (lints, tests, readme)
 check: lint test readme

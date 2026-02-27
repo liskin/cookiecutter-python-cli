@@ -12,27 +12,27 @@
 
 ## Installation
 
+Using [uv][]:
+
+```console
+$ uv tool install {{ cookiecutter.hyphenated }}
+```
+
 Using [pipx][]:
 
-```
-pipx ensurepath
-pipx install {{ cookiecutter.hyphenated }}
-```
-
-To keep a local git clone around:
-
-```
-git clone https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}
-make -C {{ cookiecutter.hyphenated }} pipx
+```console
+$ pipx ensurepath
+$ pipx install {{ cookiecutter.hyphenated }}
 ```
 
-Alternatively, if you don't need the isolated virtualenv that [pipx][]
-provides, feel free to just:
+From a git clone:
 
-```
-pip install {{ cookiecutter.hyphenated }}
+```console
+$ git clone https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}
+$ uv tool install ./{{ cookiecutter.hyphenated }}
 ```
 
+[uv]: https://docs.astral.sh/uv/
 [pipx]: https://github.com/pypa/pipx
 
 ## Usage
