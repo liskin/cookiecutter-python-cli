@@ -38,6 +38,10 @@ $ uv tool install ./demo-demo
 ## Usage
 
 <!-- include tests/readme/help.md -->
+<!--
+    $ . "$TESTDIR"/../.xdg-user.sh
+-->
+
     $ demo-demo --help
     Usage: demo-demo [OPTIONS]
     
@@ -59,6 +63,10 @@ which is located at `~/.config/demo_demo/config.yaml` by default
 Sample config file can be generated using the `--config-sample` flag:
 
 <!-- include tests/readme/config-sample.md -->
+<!--
+    $ . "$TESTDIR"/../.xdg-user.sh
+-->
+
     $ demo-demo --config-sample
 <!-- end include tests/readme/config-sample.md -->
 

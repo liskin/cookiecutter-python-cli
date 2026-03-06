@@ -1,3 +1,7 @@
+<!--
+    $ . "$TESTDIR"/../.xdg-user.sh
+-->
+
     $ demo-demo --help
     Usage: demo-demo [OPTIONS]
     
