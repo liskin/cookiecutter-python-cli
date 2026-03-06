@@ -60,8 +60,6 @@ test-pytest: $(VENV_DONE)
 test-prysk: PRYSK_INTERACTIVE=$(shell [ -t 0 ] && echo --interactive)
 test-prysk: $(VENV_DONE)
 	PATH="$(CURDIR)/$(VENV)/bin:$$PATH" \
-	XDG_DATA_HOME=/home/user/.local/share \
-	XDG_CONFIG_HOME=/home/user/.config \
 	$(VENV_PYTHON) -m prysk --indent=4 --shell=/bin/bash $(PRYSK_INTERACTIVE) \
 		$(wildcard tests/*.md tests/*/*.md tests/*/*/*.md)
 
