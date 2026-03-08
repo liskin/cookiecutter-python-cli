@@ -8,6 +8,7 @@
 ```console
 $ mkdir my-project
 $ cd my-project
+$ git init
 $ ~/src/cookiecutter-python-cli/update.sh \
     -t "$(realpath --relative-to=. ~/src/cookiecutter-python-cli)" \
     -p . -b template name=my-project
