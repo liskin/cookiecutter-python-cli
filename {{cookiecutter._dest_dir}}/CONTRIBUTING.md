@@ -6,22 +6,22 @@ Obtain the source code:
 
     $ git clone https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.hyphenated }}
 
-Setup Python virtual env and install missing dependencies:
+Setup Python virtual env and install dependencies:
 
-    $ make
+    $ just venv
 
 Make changes using your preferred editor.
 
 Then invoke lints, tests, …:
 
-    $ make check
+    $ just check
 
 These checks are also invoked in [CI (GitHub Actions)][ci] (against multiple
 Python versions and also using different Linux distributions Python packages)
 whenever a branch is pushed or a pull request is opened. You may need to
 enable Actions in your fork's settings.
 
-Other common tasks are available in the [Makefile](Makefile):
+Other common tasks are available in the [Justfile](Justfile):
 
 <!-- include tests/readme/make-help.md -->
 <!-- end include tests/readme/make-help.md -->

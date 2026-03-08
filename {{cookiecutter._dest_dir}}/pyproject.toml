@@ -57,7 +57,7 @@ dev = [
 [tool.gha-check-distro]
 dependencies-apt = [
     "jq",
-    "make",
+    "just",
     "python3-click",
     "python3-configobj",
     "python3-flake8",

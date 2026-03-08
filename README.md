@@ -19,6 +19,6 @@ $ git push -u origin main template
 ## Updating an existing project
 
 ```console
-$ make template-merge
+$ just template-merge
 $ git push origin main template
 ```
