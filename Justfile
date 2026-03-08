@@ -1,5 +1,5 @@
 help:
-    @just --list
+    @just --list --unsorted
 
 # ----------------------------------------------------------------------
 
@@ -11,8 +11,6 @@ demo_data := """
     author_github=liskin
     author_paypal=lisknisi
 """
-
-# tmp_dir := ".tmp"
 
 # Generate demo project into the .tmp subdirectory, removing it first.
 tmp-rm tmp_dir=".tmp": && (tmp tmp_dir)
