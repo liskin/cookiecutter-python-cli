@@ -32,6 +32,8 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           add-problem-matchers: 'false'
+          # disable cache to protect against cache-poisoning attacks
+          enable-cache: 'false'
       - name: Build
         run: |
           make dist
