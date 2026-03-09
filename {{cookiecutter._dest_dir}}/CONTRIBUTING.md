@@ -12,6 +12,10 @@ Setup Python virtual env and install dependencies:
 
 Make changes using your preferred editor.
 
+Try running the modified code:
+
+    $ just run --help
+
 Then invoke lints, tests, …:
 
     $ just check
