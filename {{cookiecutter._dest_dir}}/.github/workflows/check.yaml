@@ -13,9 +13,6 @@ permissions:
   contents: read
 
 env:
-  # more verbosity to make it easier to understand failures
-  PYTEST_FLAGS: -v --log-level=DEBUG
-
   # dependency cooldown to mitigate supply chain attacks
   UV_EXCLUDE_NEWER: '1 week'
 
@@ -69,7 +66,8 @@ jobs:
         uses: liskin/gh-problem-matcher-wrap@v3
         with:
           linters: pytest
-          run: just test-pytest
+          # more pytest verbosity to make it easier to understand failures
+          run: just test-pytest -v --log-level=DEBUG
       - name: prysk, readme
         run: just readme-diff
       - name: smoke-dist
@@ -160,7 +158,8 @@ jobs:
         uses: liskin/gh-problem-matcher-wrap@v3
         with:
           linters: pytest
-          run: just test-pytest
+          # more pytest verbosity to make it easier to understand failures
+          run: just test-pytest -v --log-level=DEBUG
       - name: prysk, readme
         run: just readme-diff
 
