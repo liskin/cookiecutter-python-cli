@@ -34,9 +34,11 @@ jobs:
           add-problem-matchers: 'false'
           # disable cache to protect against cache-poisoning attacks
           enable-cache: 'false'
+      - name: Install just
+        uses: taiki-e/install-action@just
       - name: Build
         run: |
-          make dist
+          just dist
       - name: Store artifacts
         uses: actions/upload-artifact@v7
         with:
