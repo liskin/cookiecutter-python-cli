@@ -90,12 +90,27 @@ o cookiecutter \
 
 o git -C "$tmp_worktree" add -A .
 
-last_commit_msg=$(git -C "$tmp_worktree" log -1 --pretty=format:%B 2>/dev/null || :)
+last_commit_msg=$(git -C "$tmp_worktree" log -1 --pretty=format:%s 2>/dev/null || :)
+if [[ "$last_commit_msg" =~ ^Render\ template\ [^\ ]+\ at\ ([^\ ]+)$ ]]; then
+	last_template_version="${BASH_REMATCH[1]}"
+else
+	last_template_version=
+fi
+
 commit_msg="Render template $template at $template_version"
 git -C "$tmp_worktree" diff --quiet --exit-code --cached && changed= || changed=:
 
 if [[ $changed || "$last_commit_msg" != "$commit_msg" ]]; then
-	o git -C "$tmp_worktree" commit -m "$commit_msg" --allow-empty
+	if [[ $last_template_version ]]; then
+		commit_msg_changelog="$(
+			git -C "$template" log --format="* %h %s" --abbrev=10 \
+				"${last_template_version%-dirty}".."${template_version%-dirty}" \
+			|| :
+		)"
+	else
+		commit_msg_changelog=
+	fi
+	o git -C "$tmp_worktree" commit -m "$commit_msg" ${commit_msg_changelog:+-m "Template changes:" -m "$commit_msg_changelog"} --allow-empty
 else
 	oo "Skipping commit, no changes and no new template version"
 fi
