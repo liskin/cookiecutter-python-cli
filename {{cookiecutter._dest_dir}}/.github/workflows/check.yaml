@@ -106,6 +106,7 @@ jobs:
         run: |
           set -ex
           apt update
+          apt full-upgrade -y # apt solver 3.0 won't upgrade package to install recommends
           apt install -y git
       - uses: actions/checkout@v6
         with:
