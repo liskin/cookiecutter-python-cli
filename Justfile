@@ -34,6 +34,6 @@ demo:
         --branch {{ demo_branch }} \
         {{ replace_regex(demo_data, '\s+', ' ') }}
 
-# Clean (remove all gitignored files and prune worktrees).
+# Clean all (locally) gitignored files/directories
 clean:
     git clean -ffdX
